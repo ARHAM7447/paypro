@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Products - PriceTrack</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <span>🚀</span> PriceTrack
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="dashboard.html"><span>📊</span> Dashboard</a>
+            <a href="my-products.html" class="active"><span>📦</span> My Products</a>
+            <a href="wishlist.html"><span>🛍️</span> Wishlist</a>
+            <a href="analytics.html"><span>📈</span> Analytics</a>
+            <a href="alerts.html"><span>🔔</span> Alerts</a>
+            <a href="discover.html"><span>🔍</span> Discover Deals</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="index.html" class="btn-logout">← Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header class="top-bar">
+            <a href="dashboard.html" class="back-btn">← Dashboard</a>
+            <div class="search-container">
+                <input type="text" placeholder="Search your products...">
+            </div>
+            <div class="top-right">
+                <div class="notification"><span>🔔</span><span class="badge">3</span></div>
+                <div class="user-profile">
+                    <img src="https://picsum.photos/id/64/40/40" alt="User">
+                    <span>Arham</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard-container">
+            <h1>My Products <span style="font-size:1.2rem;color:#00f5ff;">(24 Total)</span></h1>
+            <p class="subtitle">All products you are currently tracking</p>
+
+            <!-- Add your product list here similar to dashboard -->
+            <div class="card full-width">
+                <div class="card-header">
+                    <h2>Tracked Products</h2>
+                    <button class="add-btn">+ Add New Product</button>
+                </div>
+                <p style="padding:40px;text-align:center;color:#888;">Your full product list will appear here...</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
