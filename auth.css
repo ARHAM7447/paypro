@@ -1,5 +1,6 @@
 /* auth.css - Premium Auth Pages */
 
+/* ==================== ROOT & BASE ==================== */
 :root {
     --primary: #00f5ff;
     --accent: #7b5eff;
@@ -22,14 +23,15 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    padding: 20px 15px; /* Safe padding on very small screens */
 }
 
-/* Main Container */
+/* ==================== MAIN CONTAINER ==================== */
 .auth-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     max-width: 1100px;
-    width: 95%;
+    width: 100%;
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(20px);
     border-radius: 32px;
@@ -38,6 +40,7 @@ body {
     border: 1px solid rgba(255,255,255,0.1);
 }
 
+/* ==================== LEFT SIDE ==================== */
 .auth-left {
     padding: 80px 60px;
     background: linear-gradient(135deg, rgba(0,245,255,0.15), rgba(123,94,255,0.15));
@@ -68,11 +71,12 @@ body {
     max-width: 320px;
 }
 
-/* Right Side - Form */
+/* ==================== RIGHT SIDE - FORM ==================== */
 .auth-right {
     padding: 80px 70px;
     display: flex;
     align-items: center;
+    position: relative; /* For back button */
 }
 
 .auth-card {
@@ -135,22 +139,36 @@ body {
     text-decoration: underline;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-google {
     width: 100%;
     padding: 16px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.btn-primary {
     background: linear-gradient(90deg, var(--primary), var(--accent));
     color: white;
     border: none;
-    border-radius: 16px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.4s;
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 30px -10px rgba(0, 245, 255, 0.5);
+}
+
+.btn-google {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+}
+
+.btn-google:hover {
+    background: rgba(255,255,255,0.15);
 }
 
 .divider {
@@ -175,22 +193,6 @@ body {
     color: #888;
 }
 
-.btn-google {
-    width: 100%;
-    padding: 16px;
-    background: rgba(255,255,255,0.1);
-    border: 1px solid rgba(255,255,255,0.2);
-    color: white;
-    border-radius: 16px;
-    font-size: 1.05rem;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.btn-google:hover {
-    background: rgba(255,255,255,0.15);
-}
-
 .switch-text {
     text-align: center;
     margin-top: 2rem;
@@ -207,23 +209,7 @@ body {
     text-decoration: underline;
 }
 
-/* Responsive */
-@media (max-width: 968px) {
-    .auth-container {
-        grid-template-columns: 1fr;
-        margin: 20px;
-    }
-    
-    .auth-left {
-        padding: 60px 40px;
-        text-align: center;
-    }
-}
-
-    .auth-right {
-        padding: 60px 40px;
-    }
-/* Back Button for Auth Pages */
+/* ==================== BACK BUTTON ==================== */
 .back-btn {
     position: absolute;
     top: 30px;
@@ -249,9 +235,90 @@ body {
     transform: translateX(-5px);
 }
 
-/* Make sure auth-right has relative positioning */
-.auth-right {
-    position: relative;
-    padding: 80px 70px;
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+/* Extra Small Devices (Mobile - up to 480px) */
+@media (max-width: 480px) {
+    .auth-container {
+        border-radius: 24px;
+        margin: 10px;
+    }
+    
+    .auth-left,
+    .auth-right {
+        padding: 50px 25px;
+    }
+
+    .logo { font-size: 1.9rem; }
+    .auth-left h1 { font-size: 2.3rem; }
+    .tagline { font-size: 1.1rem; max-width: 100%; }
+
+    .auth-card h2 { font-size: 2.1rem; }
+    
+    .back-btn {
+        top: 20px;
+        left: 20px;
+        padding: 8px 14px;
+        font-size: 0.95rem;
+    }
 }
 
+/* Small Devices (Mobile/Tablet - 481px to 767px) */
+@media (max-width: 767px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .auth-left {
+        padding: 70px 40px;
+        text-align: center;
+    }
+    
+    .auth-right {
+        padding: 60px 35px;
+    }
+
+    .tagline {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Medium Devices (Tablets - 768px to 968px) */
+@media (max-width: 968px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+        margin: 20px;
+        max-width: 620px;
+    }
+    
+    .auth-left {
+        padding: 80px 50px;
+    }
+    
+    .auth-right {
+        padding: 70px 50px;
+    }
+}
+
+/* Large Devices (Laptops & Desktops) */
+@media (min-width: 1200px) {
+    .auth-container {
+        max-width: 1150px;
+    }
+    
+    .auth-left {
+        padding: 90px 75px;
+    }
+    
+    .auth-right {
+        padding: 90px 80px;
+    }
+}
+
+/* Very Large Screens */
+@media (min-width: 1400px) {
+    .auth-container {
+        max-width: 1250px;
+    }
+}

@@ -8,25 +8,56 @@
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">PriceTrack</div>
-            
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="features.html">Features</a></li>
-                <li><a href="how-it-works.html">How It Works</a></li>
-                <li><a href="dashboard.html">Dashboard</a></li>
-            </ul>
+    
+    <!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <span class="sidebar-logo">PriceTrack</span>
+        <span class="close-btn" onclick="toggleSidebar()">✕</span>
+    </div>
 
-            <div class="nav-actions">
-                <a href="login.html" class="btn btn-outline">Login</a>
-                <a href="signup.html" class="btn btn-primary">Get Started Free →</a>
-            </div>
+    <ul class="sidebar-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="features.html">Features</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+
+    <div class="sidebar-actions">
+        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="signup.html" class="btn btn-primary">Get Started Free →</a>
+    </div>
+</div>
+
+<!-- Navbar -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">PriceTrack</div>
+
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="login.html" class="btn btn-outline">Login</a>
+            <a href="signup.html" class="btn btn-primary">Get Started Free →</a>
         </div>
-    </nav>
 
+        <!-- Hamburger Menu -->
+        <div class="hamburger" onclick="toggleSidebar()">
+            ☰
+        </div>
+    </div>
+</nav>
+
+<script>
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("open");
+}
+</script>
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">

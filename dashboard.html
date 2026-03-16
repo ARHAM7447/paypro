@@ -7,7 +7,16 @@
     <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
+<div class="mobile-header">
+    <div class="logo">PriceTrack</div>
+    <div class="hamburger" onclick="toggleSidebar()">☰</div>
+</div>
 
+<script>
+function toggleSidebar() {
+    document.body.classList.toggle("sidebar-open");
+}
+</script>
     <!-- Sidebar -->
     <div class="sidebar">
         <div class="logo">

@@ -20,7 +20,7 @@ body {
     line-height: 1.6;
 }
 
-/* Navigation */
+/* ====================== NAVIGATION ====================== */
 nav {
     position: fixed;
     top: 0;
@@ -74,6 +74,7 @@ nav {
     font-weight: 600;
     text-decoration: none;
     transition: all 0.4s;
+    white-space: nowrap;
 }
 
 .btn-outline {
@@ -91,7 +92,7 @@ nav {
     color: white;
 }
 
-/* Hero */
+/* ====================== HERO ====================== */
 .hero {
     min-height: 85vh;
     display: flex;
@@ -140,7 +141,7 @@ nav {
     margin: 0 auto;
 }
 
-/* Steps Section */
+/* ====================== STEPS SECTION ====================== */
 .steps-section {
     padding: 100px 0;
     background: #0a0a1f;
@@ -204,7 +205,7 @@ nav {
     box-shadow: 0 15px 40px -10px rgba(0,0,0,0.4);
 }
 
-/* Benefits */
+/* ====================== BENEFITS ====================== */
 .benefits {
     padding: 120px 0;
     background: linear-gradient(135deg, #1a0033, #0a0a1f);
@@ -244,7 +245,7 @@ nav {
     margin-bottom: 0.8rem;
 }
 
-/* CTA */
+/* ====================== CTA ====================== */
 .cta {
     padding: 140px 0;
     text-align: center;
@@ -262,7 +263,7 @@ nav {
     margin-bottom: 3rem;
 }
 
-/* Footer */
+/* ====================== FOOTER ====================== */
 footer {
     background: #05050f;
     padding: 100px 0 40px;
@@ -302,6 +303,266 @@ footer {
     justify-content: space-between;
     color: #666;
     font-size: 0.95rem;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-/* ====================== AUTH PAGE ====================== */
+/* ====================== RESPONSIVE DESIGN ====================== */
+
+/* Large Screens */
+@media (min-width: 1400px) {
+    .nav-container,
+    .hero-content,
+    .steps-container,
+    .benefits-grid,
+    .footer-container,
+    .cta {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+/* Tablets & Medium Screens */
+@media (max-width: 1024px) {
+    .nav-menu {
+        gap: 2rem;
+    }
+    
+    .steps-container {
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2.5rem;
+    }
+    
+    .step-card {
+        padding: 35px 30px;
+    }
+    
+    .benefits-grid {
+        gap: 2rem;
+    }
+}
+
+/* Small Tablets & Large Mobile */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 1rem 1.5rem;
+    }
+    
+    .nav-menu {
+        display: none; /* Ready for hamburger menu */
+    }
+    
+    .hero {
+        min-height: 70vh;
+        padding-top: 90px;
+    }
+    
+    .hero h1 {
+        font-size: clamp(2.6rem, 7vw, 3.8rem);
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .steps-section {
+        padding: 80px 0;
+    }
+    
+    .steps-container {
+        grid-template-columns: 1fr;
+        padding: 0 1.5rem;
+        gap: 2rem;
+    }
+    
+    .step-card {
+        padding: 32px 28px;
+    }
+    
+    .step-number {
+        font-size: 4rem;
+    }
+    
+    .benefits {
+        padding: 100px 0;
+    }
+    
+    .section-header h2 {
+        font-size: 2.6rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        padding: 0 1.5rem;
+    }
+    
+    .cta {
+        padding: 100px 0;
+    }
+    
+    .cta h2 {
+        font-size: 2.6rem;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.2rem;
+    }
+}
+
+/* Mobile Phones */
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 1rem 1.2rem;
+    }
+    
+    .logo {
+        font-size: 1.65rem;
+    }
+    
+    .hero {
+        min-height: 65vh;
+        padding-top: 80px;
+    }
+    
+    .hero-badge {
+        padding: 8px 20px;
+        font-size: 0.95rem;
+    }
+    
+    .steps-container {
+        padding: 0 1rem;
+    }
+    
+    .step-card {
+        padding: 28px 24px;
+    }
+    
+    .step-icon {
+        font-size: 3rem;
+    }
+    
+    .benefit-item {
+        padding: 30px 15px;
+    }
+    
+    .benefit-icon {
+        font-size: 3rem;
+    }
+    
+    .cta {
+        padding: 80px 0;
+    }
+    
+    .cta h2 {
+        font-size: 2.3rem;
+    }
+    
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .footer-bottom {
+        font-size: 0.9rem;
+    }
+}
+/* ====================== HAMBURGER MENU ====================== */
+/* ----- SIDEBAR ----- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100vh;
+    background: #101022;
+    padding: 25px;
+    transition: 0.4s ease;
+    z-index: 9999;
+    box-shadow: 5px 0 20px rgba(0,0,0,0.4);
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sidebar-logo {
+    font-size: 1.7rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #00f5ff, #7b5eff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.close-btn {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+.sidebar-menu {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar-menu li {
+    margin: 18px 0;
+}
+
+.sidebar-menu a {
+    text-decoration: none;
+    color: #ddd;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.sidebar-menu a:hover {
+    color: #00f5ff;
+}
+
+.sidebar-actions {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-actions .btn {
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+/* Hamburger (Mobile Only) */
+.hamburger {
+    display: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .nav-menu,
+    .nav-actions {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+}
