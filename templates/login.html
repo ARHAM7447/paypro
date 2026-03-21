@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - PriceTrack</title>
-    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
 </head>
 <body>
 
     <div class="auth-container">
         
-        <!-- Left Side - Branding -->
+        <!-- Left Section -->
         <div class="auth-left">
             <div class="logo">
                 <span>🚀</span> PriceTrack
@@ -19,30 +19,30 @@
             <p class="tagline">Join thousands of smart shoppers saving every day.</p>
         </div>
 
-        <!-- Right Side - Form -->
+        <!-- Right Section -->
         <div class="auth-right">
+
             <!-- Back Button -->
-            <a href="index.html" class="back-btn">
-                ← Back to Homepage
-            </a>
+            <a href="{{ url_for('home') }}" class="back-btn">← Back to Homepage</a>
 
             <div class="auth-card">
                 <h2>Welcome Back</h2>
                 <p class="subtitle">Sign in to continue to your dashboard</p>
 
-                <form>
+                <form action="{{ url_for('login') }}" method="POST">
+                    
                     <div class="input-group">
                         <label>Email Address</label>
-                        <input type="email" placeholder="you@example.com" required>
+                        <input type="email" name="email" placeholder="you@example.com" required>
                     </div>
 
                     <div class="input-group">
                         <label>Password</label>
-                        <input type="password" placeholder="••••••••" required>
+                        <input type="password" name="password" placeholder="••••••••" required>
                     </div>
 
                     <div class="remember-forgot">
-                        <label><input type="checkbox"> Remember me</label>
+                        <label><input type="checkbox" name="remember"> Remember me</label>
                         <a href="#" class="forgot-link">Forgot Password?</a>
                     </div>
 
@@ -58,11 +58,12 @@
                 </button>
 
                 <p class="switch-text">
-                    Don't have an account? 
-                    <a href="signup.html">Sign Up</a>
+                    Don't have an account?
+                    <a href="{{ url_for('signup') }}">Sign Up</a>
                 </p>
             </div>
         </div>
+
     </div>
 
 </body>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Deals - PriceTrack</title>
+
+    <!-- Correct Flask static path -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+    <!-- JS file also through Flask's static -->
+    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo"><span>🚀</span> PriceTrack</div>
+
+        <nav class="sidebar-nav">
+            <a href="{{ url_for('dashboard') }}"><span>📊</span> Dashboard</a>
+            <a href="{{ url_for('my_products') }}"><span>📦</span> My Products</a>
+            <a href="{{ url_for('wishlist') }}"><span>🛍️</span> Wishlist</a>
+            <a href="{{ url_for('analytics') }}"><span>📈</span> Analytics</a>
+            <a href="{{ url_for('alerts') }}"><span>🔔</span> Alerts</a>
+            <a href="{{ url_for('discover') }}" class="active"><span>🔍</span> Discover Deals</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="{{ url_for('home') }}" class="btn-logout">← Back to Home</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header class="top-bar">
+            <a href="{{ url_for('dashboard') }}" class="back-btn">← Dashboard</a>
+        </header>
+
+        <div class="dashboard-container">
+            <h1>Discover Hot Deals</h1>
+            <p class="subtitle">AI recommended products with biggest discounts</p>
+
+            <div class="card full-width">
+                <p style="padding:80px;text-align:center;color:#00f5ff;">
+                    🔥 Trending Deals & Smart Recommendations Here...
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

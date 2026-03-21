@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How It Works - PriceTrack</title>
+    <link rel="stylesheet" href="how-it-works.css">
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <span class="sidebar-logo">PriceTrack</span>
+        <span class="close-btn" onclick="toggleSidebar()">✕</span>
+    </div>
+
+    <ul class="sidebar-menu">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('features') }}">Features</a></li>
+        <li><a href="{{ url_for('how_it_works') }}">How It Works</a></li>
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+    </ul>
+
+    <div class="sidebar-actions">
+        <a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
+        <a href="{{ url_for('signup') }}" class="btn btn-primary">Get Started Free →</a>
+    </div>
+</div>
+
+<!-- Navbar -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">PriceTrack</div>
+
+        <ul class="nav-menu">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('features') }}">Features</a></li>
+            <li><a href="{{ url_for('how_it_works') }}">How It Works</a></li>
+            <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
+            <a href="{{ url_for('signup') }}" class="btn btn-primary">Get Started Free →</a>
+        </div>
+
+        <div class="hamburger" onclick="toggleSidebar()">☰</div>
+    </div>
+</nav>
+
+<script>
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("open");
+}
+</script>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-badge">3 Simple Steps</div>
+            <h1>Track Prices.<br>Save Money.<br><span>In Just Minutes.</span></h1>
+            <p class="hero-subtitle">
+                Our intelligent system makes price tracking effortless.
+                Follow these 3 steps and start saving today.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Steps Section -->
+<section class="steps-section">
+    <div class="steps-container">
+
+        <!-- Step 1 -->
+        <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-icon">🔗</div>
+            <h3>Paste Any Product URL</h3>
+            <p>Copy the product link from any major store and paste it into PriceTrack.</p>
+            <div class="step-visual">
+                <img src="https://picsum.photos/id/1015/600/380" alt="Paste URL">
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-icon">📡</div>
+            <h3>We Track in Real-Time</h3>
+            <p>Our crawlers monitor prices across platforms and update every few seconds.</p>
+            <div class="step-visual">
+                <img src="https://picsum.photos/id/201/600/380" alt="Real-time tracking">
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-icon">🛎️</div>
+            <h3>Get Notified & Save</h3>
+            <p>Instant alerts via Email, WhatsApp, or Push when prices drop.</p>
+            <div class="step-visual">
+                <img src="https://picsum.photos/id/237/600/380" alt="Get notified">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="benefits">
+    <div class="section-header">
+        <h2>Why Thousands Trust PriceTrack</h2>
+    </div>
+
+    <div class="benefits-grid">
+        <div class="benefit-item">
+            <span class="benefit-icon">⚡</span>
+            <h4>Lightning Fast</h4>
+            <p>Real-time updates across 12+ platforms</p>
+        </div>
+
+        <div class="benefit-item">
+            <span class="benefit-icon">📊</span>
+            <h4>Smart Analytics</h4>
+            <p>Historical charts & predictions</p>
+        </div>
+
+        <div class="benefit-item">
+            <span class="benefit-icon">🛡️</span>
+            <h4>100% Secure</h4>
+            <p>Encrypted user data</p>
+        </div>
+
+        <div class="benefit-item">
+            <span class="benefit-icon">🌍</span>
+            <h4>Multi-Store</h4>
+            <p>Compare prices across all major e-commerce sites</p>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<section class="cta">
+    <div class="cta-content">
+        <h2>Ready to start saving money every day?</h2>
+        <p>Join 12,450+ smart shoppers who never overpay again.</p>
+        <a href="#" class="btn btn-primary">Get Started Free →</a>
+        <p style="margin-top: 2rem; color: #777;">
+            No credit card required • Takes less than 60 seconds
+        </p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <div class="logo" style="font-size: 2rem;">PriceTrack</div>
+            <p style="color: #888;">Intelligent price tracking for smarter shopping.</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Product</h3>
+            <ul>
+                <li><a href="{{ url_for('features') }}">Features</a></li>
+                <li><a href="{{ url_for('how_it_works') }}">How It Works</a></li>
+                <li><a href="#">Pricing</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Company</h3>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h3>Legal</h3>
+            <ul>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Terms</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div>© 2026 PriceTrack. All rights reserved.</div>
+        <div>Made with ❤️ for smarter shoppers</div>
+    </div>
+</footer>
+
+</body>
+</html>

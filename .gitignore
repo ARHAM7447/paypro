@@ -4,3 +4,6 @@ __pycache__/
 models/
 *.log
 .env
+backend/venv/
+backend/__pycache__/
+backend/.env

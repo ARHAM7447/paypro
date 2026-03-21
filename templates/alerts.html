@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts - PriceTrack</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo"><span>🚀</span> PriceTrack</div>
+
+        <nav class="sidebar-nav">
+            <a href="{{ url_for('dashboard') }}"><span>📊</span> Dashboard</a>
+            <a href="{{ url_for('my_products') }}"><span>📦</span> My Products</a>
+            <a href="{{ url_for('wishlist') }}"><span>🛍️</span> Wishlist</a>
+            <a href="{{ url_for('analytics') }}"><span>📈</span> Analytics</a>
+            <a href="{{ url_for('alerts') }}" class="active"><span>🔔</span> Alerts</a>
+            <a href="{{ url_for('discover') }}"><span>🔍</span> Discover Deals</a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="{{ url_for('home') }}" class="btn-logout">← Back to Home</a>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header class="top-bar">
+            <a href="{{ url_for('dashboard') }}" class="back-btn">← Dashboard</a>
+        </header>
+
+        <div class="dashboard-container">
+            <h1>Price Alerts</h1>
+            <p class="subtitle">All your active and past notifications</p>
+
+            <div class="card full-width">
+                <p style="padding:60px;text-align:center;color:#888;">
+                    Your alerts will appear here...
+                </p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
