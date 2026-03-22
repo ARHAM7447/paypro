@@ -17,7 +17,7 @@
         </div>
 
         <ul class="sidebar-menu">
-            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
             <li><a href="{{ url_for('features') }}">Features</a></li>
             <li><a href="{{ url_for('how_it_works') }}">How It Works</a></li>
             <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
@@ -35,7 +35,7 @@
             <div class="logo">PriceTrack</div>
 
             <ul class="nav-menu">
-                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('home') }}" class="active">Home</a></li>
                 <li><a href="{{ url_for('features') }}">Features</a></li>
                 <li><a href="{{ url_for('how_it_works') }}">How It Works</a></li>
                 <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
@@ -46,21 +46,55 @@
                 <a href="{{ url_for('signup') }}" class="btn btn-primary">Get Started Free →</a>
             </div>
 
-            <div class="hamburger" onclick="toggleSidebar()">☰</div>
+            <button class="hamburger" aria-label="Toggle menu" onclick="toggleSidebar()">☰</button>
         </div>
     </nav>
 
-    <!-- Sidebar toggle -->
     <script>
         function toggleSidebar() {
             document.getElementById("sidebar").classList.toggle("open");
+        }
+
+        // Track Now – basic version (later replace with real API call)
+        function trackProduct() {
+            const input = document.getElementById("product-url");
+            const url = input?.value?.trim();
+
+            if (!url) {
+                alert("Please paste a product URL first");
+                input?.focus();
+                return;
+            }
+
+            // Placeholder feedback
+            // You should replace this block with real fetch('/api/track', ...)
+            const loadingText = "Starting tracking...";
+            alert(loadingText + "\n\nURL: " + url.substring(0, 60) + (url.length > 60 ? "..." : ""));
+
+            // Real implementation example (uncomment when backend ready):
+            /*
+            fetch('/api/track', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: url })
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (data.success) {
+                    alert("Tracking started! ✓\n" + (data.name || "Product") + " added");
+                    input.value = ""; // optional clear
+                } else {
+                    alert("Error: " + (data.error || "Try again later"));
+                }
+            })
+            .catch(err => alert("Connection problem: " + err.message));
+            */
         }
     </script>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-
             <div class="hero-text">
                 <div class="hero-badge">
                     <span>✦ Now in Beta</span>
@@ -82,7 +116,7 @@
                 <p>A scalable system that tracks product prices across top e-commerce platforms in real time.</p>
 
                 <div class="search-bar">
-                    <input type="text" id="product-url" placeholder="Paste product URL (Amazon, Flipkart, Myntra...)">
+                    <input type="url" id="product-url" placeholder="Paste product URL (Amazon, Flipkart, Myntra...)" autocomplete="off">
                     <button onclick="trackProduct()">Track Now</button>
                 </div>
 
@@ -94,7 +128,6 @@
             <div class="hero-image">
                 <img src="https://picsum.photos/id/1015/800/620" alt="Price Tracking Dashboard Preview">
             </div>
-
         </div>
     </section>
 
@@ -106,7 +139,6 @@
         </div>
 
         <div class="features-grid">
-
             <div class="feature-card">
                 <div class="feature-icon">📡</div>
                 <h3>Real-Time Price Tracking</h3>
@@ -130,7 +162,6 @@
                 <h3>Multi-Platform Monitoring</h3>
                 <p>Track the same product across 12+ major e-commerce sites simultaneously and compare prices instantly.</p>
             </div>
-
         </div>
     </section>
 
@@ -153,7 +184,6 @@
     <!-- Footer -->
     <footer>
         <div class="footer-container">
-
             <div class="footer-col">
                 <div class="logo" style="font-size:2rem; margin-bottom:1rem;">PriceTrack</div>
                 <p style="color:#888; max-width:280px;">
@@ -189,7 +219,6 @@
                     <li><a href="#">Data Protection</a></li>
                 </ul>
             </div>
-
         </div>
 
         <div class="footer-bottom">

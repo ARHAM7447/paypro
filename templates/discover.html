@@ -5,20 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discover Deals - PriceTrack</title>
 
-    <!-- Correct Flask static path -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 
-    <!-- JS file also through Flask's static -->
-    <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+    <!-- Optional: add mobile toggle support like in dashboard -->
+    <script>
+    function toggleSidebar() {
+        document.body.classList.toggle("sidebar-open");
+    }
+    </script>
 </head>
 <body>
+
+    <!-- Mobile header (consistent with dashboard) -->
+    <div class="mobile-header">
+        <div class="logo">PriceTrack</div>
+        <div class="hamburger" onclick="toggleSidebar()">☰</div>
+    </div>
 
     <div class="sidebar">
         <div class="logo"><span>🚀</span> PriceTrack</div>
 
         <nav class="sidebar-nav">
             <a href="{{ url_for('dashboard') }}"><span>📊</span> Dashboard</a>
-            <a href="{{ url_for('my_products') }}"><span>📦</span> My Products</a>
+            <a href="{{ url_for('my_products_page') }}"><span>📦</span> My Products</a>
             <a href="{{ url_for('wishlist') }}"><span>🛍️</span> Wishlist</a>
             <a href="{{ url_for('analytics') }}"><span>📈</span> Analytics</a>
             <a href="{{ url_for('alerts') }}"><span>🔔</span> Alerts</a>
@@ -37,12 +46,15 @@
 
         <div class="dashboard-container">
             <h1>Discover Hot Deals</h1>
-            <p class="subtitle">AI recommended products with biggest discounts</p>
+            <p class="subtitle">AI recommended products with biggest discounts right now</p>
 
             <div class="card full-width">
-                <p style="padding:80px;text-align:center;color:#00f5ff;">
-                    🔥 Trending Deals & Smart Recommendations Here...
-                </p>
+                <div style="padding: 100px 20px; text-align: center; color: #00f5ff; font-size: 1.3rem; line-height: 1.6;">
+                    🔥 Trending Deals & Smart Recommendations<br>
+                    <span style="display: block; margin-top: 16px; font-size: 1rem; color: #888;">
+                        Loading the best discounts from Amazon, Flipkart & more...
+                    </span>
+                </div>
             </div>
         </div>
     </div>

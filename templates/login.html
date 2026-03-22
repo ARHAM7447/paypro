@@ -10,7 +10,7 @@
 
     <div class="auth-container">
         
-        <!-- Left Section -->
+        <!-- Left Section - Branding -->
         <div class="auth-left">
             <div class="logo">
                 <span>🚀</span> PriceTrack
@@ -19,7 +19,7 @@
             <p class="tagline">Join thousands of smart shoppers saving every day.</p>
         </div>
 
-        <!-- Right Section -->
+        <!-- Right Section - Form -->
         <div class="auth-right">
 
             <!-- Back Button -->
@@ -29,20 +29,23 @@
                 <h2>Welcome Back</h2>
                 <p class="subtitle">Sign in to continue to your dashboard</p>
 
-                <form action="{{ url_for('login') }}" method="POST">
-                    
+                <!-- Important: method="POST" + csrf protection placeholder -->
+                <form action="{{ url_for('login') }}" method="POST" novalidate>
+                    <!-- If you use Flask-WTF or manual CSRF, add this line -->
+                    <!-- {{ form.csrf_token }} -->
+
                     <div class="input-group">
-                        <label>Email Address</label>
-                        <input type="email" name="email" placeholder="you@example.com" required>
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required autofocus>
                     </div>
 
                     <div class="input-group">
-                        <label>Password</label>
-                        <input type="password" name="password" placeholder="••••••••" required>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="••••••••" required>
                     </div>
 
                     <div class="remember-forgot">
-                        <label><input type="checkbox" name="remember"> Remember me</label>
+                        <label><input type="checkbox" name="remember" id="remember"> Remember me</label>
                         <a href="#" class="forgot-link">Forgot Password?</a>
                     </div>
 
@@ -53,17 +56,17 @@
                     <span>OR</span>
                 </div>
 
-                <button class="btn-google">
+                <!-- Google button (style only – real OAuth needs backend) -->
+                <button class="btn-google" disabled title="Google login coming soon">
                     <span>Continue with Google</span>
                 </button>
 
                 <p class="switch-text">
-                    Don't have an account?
+                    Don't have an account? 
                     <a href="{{ url_for('signup') }}">Sign Up</a>
                 </p>
             </div>
         </div>
-
     </div>
 
 </body>

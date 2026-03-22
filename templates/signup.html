@@ -19,50 +19,60 @@
             <p class="tagline">Create your free account in 30 seconds</p>
         </div>
 
-        <!-- Right Side -->
+        <!-- Right Side - Form -->
         <div class="auth-right">
 
             <!-- Back Button -->
-            <a href="{{ url_for('home') }}" class="back-btn">
-                ← Back to Homepage
-            </a>
+            <a href="{{ url_for('home') }}" class="back-btn">← Back to Homepage</a>
 
             <div class="auth-card">
                 <h2>Create Account</h2>
                 <p class="subtitle">Join the smartest way to shop</p>
 
-                <form>
+                <!-- Fixed: added method + action + id attributes -->
+                <form action="{{ url_for('signup') }}" method="POST" novalidate>
+
                     <div class="input-group">
-                        <label>Full Name</label>
-                        <input type="text" placeholder="Arham Khan" required>
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Arham Khan" required autofocus>
                     </div>
 
                     <div class="input-group">
-                        <label>Email Address</label>
-                        <input type="email" placeholder="you@example.com" required>
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
                     </div>
 
                     <div class="input-group">
-                        <label>Password</label>
-                        <input type="password" placeholder="Create a strong password" required>
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create a strong password" required minlength="8">
                     </div>
 
                     <div class="input-group">
-                        <label>Confirm Password</label>
-                        <input type="password" placeholder="Confirm your password" required>
+                        <label for="confirm_password">Confirm Password</label>
+                        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password" required>
                     </div>
+
+                    <!-- Optional: terms checkbox (recommended for real signup) -->
+                    <!--
+                    <div class="input-group terms">
+                        <label>
+                            <input type="checkbox" name="terms" required>
+                            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                        </label>
+                    </div>
+                    -->
 
                     <button type="submit" class="btn-primary">Create Account</button>
                 </form>
 
                 <div class="divider"><span>OR</span></div>
 
-                <button class="btn-google">
+                <button class="btn-google" disabled title="Google signup coming soon">
                     <span>Continue with Google</span>
                 </button>
 
                 <p class="switch-text">
-                    Already have an account?
+                    Already have an account? 
                     <a href="{{ url_for('login') }}">Login</a>
                 </p>
             </div>

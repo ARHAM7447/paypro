@@ -13,7 +13,7 @@
 
         <nav class="sidebar-nav">
             <a href="{{ url_for('dashboard') }}"><span>📊</span> Dashboard</a>
-            <a href="{{ url_for('my_products') }}"><span>📦</span> My Products</a>
+            <a href="{{ url_for('my_products_page') }}"><span>📦</span> My Products</a>
             <a href="{{ url_for('wishlist') }}"><span>🛍️</span> Wishlist</a>
             <a href="{{ url_for('analytics') }}"><span>📈</span> Analytics</a>
             <a href="{{ url_for('alerts') }}" class="active"><span>🔔</span> Alerts</a>
@@ -35,8 +35,9 @@
             <p class="subtitle">All your active and past notifications</p>
 
             <div class="card full-width">
-                <p style="padding:60px;text-align:center;color:#888;">
-                    Your alerts will appear here...
+                <p style="padding: 80px; text-align: center; color: #888; font-size: 1.1rem;">
+                    No alerts yet...<br>
+                    Set your first price drop notification from Dashboard or My Products!
                 </p>
             </div>
         </div>

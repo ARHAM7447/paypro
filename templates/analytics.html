@@ -13,7 +13,7 @@
 
         <nav class="sidebar-nav">
             <a href="{{ url_for('dashboard') }}"><span>📊</span> Dashboard</a>
-            <a href="{{ url_for('my_products') }}"><span>📦</span> My Products</a>
+            <a href="{{ url_for('my_products_page') }}"><span>📦</span> My Products</a>
             <a href="{{ url_for('wishlist') }}"><span>🛍️</span> Wishlist</a>
             <a href="{{ url_for('analytics') }}" class="active"><span>📈</span> Analytics</a>
             <a href="{{ url_for('alerts') }}"><span>🔔</span> Alerts</a>
@@ -35,9 +35,12 @@
             <p class="subtitle">Your savings and price trend overview</p>
 
             <div class="card full-width">
-                <p style="padding:100px;text-align:center;color:#00f5ff;font-size:1.2rem;">
-                    📊 Beautiful Charts & Savings Report Coming Here...
-                </p>
+                <div style="padding: 120px 20px; text-align: center; color: #00f5ff; font-size: 1.25rem; line-height: 1.6;">
+                    📊 Price Trends, Savings Summary & Charts<br>
+                    <span style="font-size: 1rem; color: #888; margin-top: 12px; display: block;">
+                        Coming soon – track how much you've saved with smart alerts!
+                    </span>
+                </div>
             </div>
         </div>
     </div>
