@@ -8,99 +8,173 @@
 </head>
 <body>
 
-    <!-- Sidebar -->
-    <div id="sidebar" class="sidebar">
-        <div class="sidebar-header">
-            <span class="sidebar-logo">PriceTrack</span>
-            <span class="close-btn" onclick="toggleSidebar()">✕</span>
-        </div>
+<!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <span class="sidebar-logo">PriceTrack</span>
+        <span class="close-btn" onclick="toggleSidebar()">✕</span>
+    </div>
 
-        <ul class="sidebar-menu">
+    <ul class="sidebar-menu">
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('features') }}">Features</a></li>
+        <li><a href="{{ url_for('how_it_works') }}" class="active">How It Works</a></li>
+        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+    </ul>
+
+    <div class="sidebar-actions">
+        <a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
+        <a href="{{ url_for('signup') }}" class="btn btn-primary">Get Started Free →</a>
+    </div>
+</div>
+
+<!-- Navbar -->
+<nav>
+    <div class="nav-container">
+        <div class="logo">PriceTrack</div>
+
+        <ul class="nav-menu">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             <li><a href="{{ url_for('features') }}">Features</a></li>
             <li><a href="{{ url_for('how_it_works') }}" class="active">How It Works</a></li>
             <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
         </ul>
 
-        <div class="sidebar-actions">
+        <div class="nav-actions">
             <a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
             <a href="{{ url_for('signup') }}" class="btn btn-primary">Get Started Free →</a>
         </div>
+
+        <div class="hamburger" onclick="toggleSidebar()">☰</div>
     </div>
+</nav>
 
-    <!-- Navbar -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">PriceTrack</div>
+<script>
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("open");
+}
+</script>
 
-            <ul class="nav-menu">
-                <li><a href="{{ url_for('home') }}">Home</a></li>
-                <li><a href="{{ url_for('features') }}">Features</a></li>
-                <li><a href="{{ url_for('how_it_works') }}" class="active">How It Works</a></li>
-                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-            </ul>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>How PriceTrack Works 🚀</h1>
+        <p>Track product prices, get alerts, and save money — all automatically.</p>
+    </div>
+</section>
 
-            <div class="nav-actions">
-                <a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
-                <a href="{{ url_for('signup') }}" class="btn btn-primary">Get Started Free →</a>
-            </div>
+<!-- STEPS -->
+<section class="steps-section">
+    <h2>3 Simple Steps</h2>
 
-            <div class="hamburger" onclick="toggleSidebar()">☰</div>
+    <div class="steps-grid">
+
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Paste Product URL</h3>
+            <p>Copy product link from Amazon, Flipkart, or Myntra and paste it into PriceTrack.</p>
         </div>
-    </nav>
 
-    <script>
-    function toggleSidebar() {
-        document.getElementById("sidebar").classList.toggle("open");
-    }
-    </script>
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>We Track Price</h3>
+            <p>Our system continuously monitors the product price and stores history.</p>
+        </div>
 
-    <!-- Hero + Steps + Benefits + CTA + Footer – same content as above -->
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Get Alerts</h3>
+            <p>Receive notifications when price drops so you can buy at the best time.</p>
+        </div>
 
-    <section class="hero"> ... </section>
-    <section class="steps-section"> ... </section>
-    <section class="benefits"> ... </section>
-    <section class="cta"> ... </section>
+    </div>
+</section>
 
-    <footer>
-        <div class="footer-container">
+<!-- BENEFITS -->
+<section class="benefits">
+    <h2>Why Use PriceTrack?</h2>
+
+    <div class="benefits-grid">
+        <div class="benefit-card">
+            <h3>💰 Save Money</h3>
+            <p>Buy products at the lowest possible price.</p>
+        </div>
+
+        <div class="benefit-card">
+            <h3>📊 Price History</h3>
+            <p>Understand trends before making a purchase.</p>
+        </div>
+
+        <div class="benefit-card">
+            <h3>⚡ Real-Time Updates</h3>
+            <p>Instant tracking across multiple platforms.</p>
+        </div>
+
+        <div class="benefit-card">
+            <h3>🔔 Smart Alerts</h3>
+            <p>Never miss a deal again.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <div class="cta-content">
+        <h2>Start Tracking Prices Today</h2>
+        <p>Join thousands of users saving money daily.</p>
+
+        <a href="{{ url_for('signup') }}" class="btn btn-primary">
+            Get Started Free →
+        </a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+       <div class="footer-container">
+
             <div class="footer-col">
-                <div class="logo" style="font-size: 2rem;">PriceTrack</div>
-                <p style="color: #888;">Intelligent price tracking for smarter shopping.</p>
+                <div class="logo" style="font-size: 2rem; margin-bottom: 1rem;">PriceTrack</div>
+                <p style="color: #888; max-width: 280px;">
+                    Building the future of intelligent shopping with real-time price intelligence.
+                </p>
             </div>
 
             <div class="footer-col">
                 <h3>Product</h3>
                 <ul>
                     <li><a href="{{ url_for('features') }}">Features</a></li>
-                    <li><a href="{{ url_for('how_it_works') }}">How It Works</a></li>
-                    <!-- <li><a href="#">Pricing</a></li> → add route when ready -->
+                    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                    <li><a href="#">Integrations</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h3>Company</h3>
                 <ul>
-                    <!-- <li><a href="#">About</a></li> -->
-                    <!-- <li><a href="#">Blog</a></li> -->
-                    <!-- <li><a href="#">Contact</a></li> -->
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
                 <h3>Legal</h3>
                 <ul>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Data Protection</a></li>
                 </ul>
             </div>
+
         </div>
 
         <div class="footer-bottom">
             <div>© 2026 PriceTrack. All rights reserved.</div>
             <div>Made with ❤️ for smarter shoppers</div>
         </div>
-    </footer>
+</footer>
 
 </body>
 </html>

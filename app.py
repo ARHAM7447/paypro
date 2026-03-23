@@ -29,12 +29,39 @@ logger.info("🚀 PriceTrack Flask app initialized")
 def home():
     return render_template("index.html")
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        print("Email:", email)
+        print("Password:", password)
+
+        return "Login working ✅"
+
     return render_template("login.html")
 
-@app.route("/signup")
+@app.route("/signup", methods=["GET", "POST"])
 def signup():
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        password = request.form.get("password")
+        confirm_password = request.form.get("confirm_password")
+
+        # 🔍 Basic validation
+        if password != confirm_password:
+            return "❌ Passwords do not match"
+
+        # 👉 Abhi ke liye print (later DB me save karenge)
+        print("Name:", name)
+        print("Email:", email)
+        print("Password:", password)
+
+        # ✅ Success response (temporary)
+        return "Signup successful ✅"
+
     return render_template("signup.html")
 
 @app.route("/dashboard")
