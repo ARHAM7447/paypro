@@ -34,12 +34,8 @@ def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
-
-        print("Email:", email)
-        print("Password:", password)
-
+        print("Email:", email, "Password:", password)
         return "Login working ✅"
-
     return render_template("login.html")
 
 @app.route("/signup", methods=["GET", "POST"])
@@ -50,16 +46,10 @@ def signup():
         password = request.form.get("password")
         confirm_password = request.form.get("confirm_password")
 
-        # 🔍 Basic validation
         if password != confirm_password:
             return "❌ Passwords do not match"
 
-        # 👉 Abhi ke liye print (later DB me save karenge)
-        print("Name:", name)
-        print("Email:", email)
-        print("Password:", password)
-
-        # ✅ Success response (temporary)
+        print("Name:", name, "Email:", email, "Password:", password)
         return "Signup successful ✅"
 
     return render_template("signup.html")
@@ -68,9 +58,9 @@ def signup():
 def dashboard():
     return render_template("dashboard.html")
 
-# Yeh wala sabse important — HTML mein jo use kiya hai uske hisaab se
+# ←←← YE WALA ROUTE ADD KIYA HAI (HTML ke liye)
 @app.route("/my-products")
-def my_products():           # ← Simple aur common naam, ab conflict nahi
+def my_products():
     return render_template("my-products.html")
 
 @app.route("/wishlist")
@@ -107,6 +97,7 @@ def track_product():
             return jsonify({"error": "URL bhejo"}), 400
 
         url = data["url"].strip()
+
         details = get_product_details(url)
 
         if "error" in details:
@@ -136,12 +127,15 @@ def get_my_products():
         for p in products:
             if not p.get("price_history"):
                 continue
-            last = p["price_history"][-1]
+            history = p["price_history"]
+            last = history[-1]
+            
             out.append({
                 "url": p["url"],
                 "name": p["name"],
                 "current_price": last["price"],
-                "last_updated": last["time"]
+                "last_updated": last["time"],
+                "price_history": history
             })
         return jsonify(out)
     except Exception as e:
@@ -165,6 +159,7 @@ def update_all_prices():
         logger.info(f"✅ Cron done → Updated: {updated} | Failed: {failed}")
     except Exception as e:
         logger.error(f"Cron failed: {e}")
+
 
 # ====================== SCHEDULER + SERVER ======================
 scheduler = BackgroundScheduler()

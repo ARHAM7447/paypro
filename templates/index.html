@@ -52,52 +52,115 @@
     </nav>
 
     <script>
+   
+    // Toggle Sidebar (kept as it is)
     function toggleSidebar() {
         document.getElementById("sidebar").classList.toggle("open");
     }
 
-    // Basic client-side example for "Track Now" button
-    // Later replace with real fetch to your /api/track endpoint
-    function trackProduct() {
+    // ==================== POWERFUL TRACK PRODUCT FUNCTION ====================
+    async function trackProduct() {
         const input = document.getElementById('product-url');
+        const button = document.querySelector('.search-bar button'); // Find the Track Now button
+
         if (!input) {
-            alert("Input field not found");
-            return;
-        }
-        
-        const url = input.value.trim();
-        
-        if (!url) {
-            alert("Please paste a product URL first");
-            input.focus();
+            showToast("Input field not found!", "error");
             return;
         }
 
-        // This is just a placeholder – connect to your real backend later
-        alert("Starting price tracking for:\n" + url + "\n\n(You need to implement the real fetch call here)");
-        
-        // Real example (uncomment when backend is ready):
-        /*
-        fetch('/api/track', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ url: url })
-        })
-        .then(response => response.json())
-        .then(data => {
+        const url = input.value.trim();
+
+        if (!url) {
+            showToast("Please paste a product URL first", "error");
+            input.focus();
+            input.classList.add('border-red-500');
+            setTimeout(() => input.classList.remove('border-red-500'), 2000);
+            return;
+        }
+
+        // Disable button + show loading state
+        const originalButtonText = button.innerHTML;
+        button.disabled = true;
+        button.innerHTML = `
+            <span class="inline-block animate-spin mr-2">⟳</span>
+            Tracking...
+        `;
+
+        try {
+            const response = await fetch('/api/track', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json' 
+                },
+                body: JSON.stringify({ url: url })
+            });
+
+            const data = await response.json();
+
             if (data.success) {
-                alert("Tracking started! ✓\nProduct: " + (data.name || "Unknown"));
+                // Success feedback
+                showToast(`✅ Tracking started!<br><strong>${data.name}</strong><br>Current Price: ₹${data.current_price}`, "success");
+                
+                // Clear input
+                input.value = '';
+
+                // Optional: Auto redirect to My Products after 1.5 seconds
+                setTimeout(() => {
+                    window.location.href = '/my-products';
+                }, 1500);
+
             } else {
-                alert("Error: " + (data.error || "Something went wrong"));
+                showToast(`❌ ${data.error || "Failed to track product"}`, "error");
             }
-        })
-        .catch(err => alert("Network error: " + err.message));
-        */
-        
-        // Optional: clear input after submit
-        // input.value = '';
+
+        } catch (err) {
+            console.error(err);
+            showToast("Network error! Please check your connection.", "error");
+        } finally {
+            // Restore button
+            button.disabled = false;
+            button.innerHTML = originalButtonText;
+        }
     }
-    </script>
+
+    // ====================== BEAUTIFUL TOAST NOTIFICATION ======================
+    function showToast(message, type = "success") {
+        // Create toast element
+        const toast = document.createElement('div');
+        toast.className = `
+            fixed bottom-6 right-6 px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 
+            text-white font-medium z-50 transition-all duration-300
+            ${type === "success" ? "bg-emerald-600" : "bg-red-600"}
+        `;
+        
+        toast.innerHTML = `
+            ${type === "success" ? "✅" : "❌"} 
+            <span>${message}</span>
+        `;
+
+        document.body.appendChild(toast);
+
+        // Auto remove after 4 seconds
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(20px)';
+            setTimeout(() => toast.remove(), 300);
+        }, 4000);
+    }
+
+    // Optional: Allow pressing Enter key in input field
+    document.addEventListener('DOMContentLoaded', () => {
+        const input = document.getElementById('product-url');
+        if (input) {
+            input.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    trackProduct();
+                }
+            });
+        }
+    });
+</script>
+    
 
     <!-- Hero Section -->
     <section class="hero">
